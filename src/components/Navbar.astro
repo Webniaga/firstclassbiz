@@ -319,11 +319,11 @@
 		// Update About Section
 		const aboutTitle = document.querySelector('#about h2');
 		if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
-		const aboutText = document.querySelector('#about p');
+		const aboutText = document.querySelector('#about .font-inter.text-lg.text-light-gray.leading-relaxed.mb-8');
 		if (aboutText) aboutText.textContent = t.aboutText;
 		const aboutStats = document.querySelectorAll('#about .text-light-gray');
-		if (aboutStats[0]) aboutStats[0].textContent = t.aboutStat1;
-		if (aboutStats[1]) aboutStats[1].textContent = t.aboutStat2;
+		if (aboutStats[2]) aboutStats[2].textContent = t.aboutStat1;
+		if (aboutStats[3]) aboutStats[3].textContent = t.aboutStat2;
 		
 		// Update Products Section
 		const productsTitle = document.querySelector('#products h2');
