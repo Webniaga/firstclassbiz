@@ -1,0 +1,493 @@
+---
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-16">
+			<!-- Logo -->
+			<div class="flex-shrink-0">
+				<a href="#home" class="flex items-center space-x-2">
+					<img 
+						src="https://img.webniaga.my/firstclassbiz/firstclassbiz1.jpg" 
+						alt="First Class Industries Logo"
+						class="w-10 h-10 rounded-lg object-cover"
+					/>
+					<span class="font-poppins font-semibold text-lg text-gold">First Class Industries</span>
+				</a>
+			</div>
+
+			<!-- Desktop Menu -->
+			<div class="hidden md:block">
+				<div class="ml-10 flex items-baseline space-x-8">
+					<a href="#home" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">Home</a>
+					<a href="#about" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">About</a>
+					<a href="#products" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">Products</a>
+					<a href="#services" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">Services</a>
+					<a href="#expertise" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">Expertise</a>
+					<a href="#contact" class="text-light-gray hover:text-gold transition-colors duration-200 font-inter">Contact</a>
+				</div>
+			</div>
+
+			<!-- CTA Button -->
+			<div class="hidden md:block">
+				<a href="#contact" class="bg-gold hover:bg-yellow-500 text-dark-charcoal font-poppins font-semibold px-6 py-2 rounded-lg transition-colors duration-200">
+					Get Your Card
+				</a>
+			</div>
+
+			<!-- Translation Button -->
+			<div class="hidden md:block">
+				<button id="translate-btn" class="bg-dark-blue hover:bg-dark-blue/80 text-light-gray hover:text-gold font-inter text-sm px-3 py-2 rounded-lg transition-colors duration-200 border border-gold/20">
+					BM
+				</button>
+			</div>
+
+			<!-- Mobile menu button -->
+			<div class="md:hidden">
+				<button type="button" class="text-light-gray hover:text-gold transition-colors duration-200" id="mobile-menu-button">
+					<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mobile Menu -->
+	<div class="md:hidden hidden" id="mobile-menu">
+		<div class="px-2 pt-2 pb-3 space-y-1 bg-dark-charcoal/95 backdrop-blur-md">
+			<a href="#home" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">Home</a>
+			<a href="#about" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">About</a>
+			<a href="#products" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">Products</a>
+			<a href="#services" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">Services</a>
+			<a href="#expertise" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">Expertise</a>
+			<a href="#contact" class="text-light-gray hover:text-gold block px-3 py-2 transition-colors duration-200">Contact</a>
+			<a href="#contact" class="bg-gold text-dark-charcoal font-semibold block px-3 py-2 mt-2 rounded-lg">Get Your Card</a>
+			<button id="mobile-translate-btn" class="bg-dark-blue text-light-gray font-inter text-sm block px-3 py-2 mt-2 rounded-lg border border-gold/20">
+				BM
+			</button>
+		</div>
+	</div>
+</nav>
+
+<script>
+	document.getElementById('mobile-menu-button').addEventListener('click', function() {
+		const mobileMenu = document.getElementById('mobile-menu');
+		mobileMenu.classList.toggle('hidden');
+	});
+
+	// Close mobile menu when clicking on menu items
+	document.querySelectorAll('#mobile-menu a').forEach(link => {
+		link.addEventListener('click', function() {
+			const mobileMenu = document.getElementById('mobile-menu');
+			mobileMenu.classList.add('hidden');
+		});
+	});
+
+	// Translation functionality
+	let isEnglish = true;
+	
+	const translations = {
+		en: {
+			home: 'Home',
+			about: 'About',
+			products: 'Products',
+			services: 'Services',
+			expertise: 'Expertise',
+			contact: 'Contact',
+			getCard: 'Get Your Card',
+			btnText: 'BM'
+		},
+		bm: {
+			home: 'Utama',
+			about: 'Tentang',
+			products: 'Produk',
+			services: 'Perkhidmatan',
+			expertise: 'Kepakaran',
+			contact: 'Hubungi',
+			getCard: 'Dapatkan Kad',
+			btnText: 'EN'
+		}
+	};
+
+	const websiteTranslations = {
+		en: {
+			// Hero Section
+			heroTitle: 'Empower Your Brand with a Premium Visa Prepaid Card',
+			heroSubtitle: 'Modern digital payment solutions designed to elevate Malaysian businesses and build customer loyalty.',
+			heroButton: 'Request a Consultation',
+			
+			// About Section
+			aboutTitle: 'Innovating Digital Finance for Local Entrepreneurs',
+			aboutText: 'First Class Industries is a Malaysian company focused on innovation in business management and digital finance. We specialize in providing custom-branded Visa Prepaid Card solutions, empowering local entrepreneurs to build a professional image and strengthen customer relationships through a modern, flexible payment network.',
+			aboutStat1: 'Businesses Served',
+			aboutStat2: 'Customer Satisfaction',
+			
+			// Products Section
+			productsTitle: 'A Complete Digital Payment Ecosystem',
+			productsSubtitle: 'Everything your business needs to accept payments, manage finances, and build customer loyalty.',
+			product1Title: 'Branded Visa Prepaid Cards',
+			product1Text: 'Offer your customers a premium, co-branded Visa card that enhances your brand\'s prestige and utility.',
+			product2Title: 'Kash E-Wallet & App',
+			product2Text: 'A powerful mobile application giving users access to a secure digital wallet and a suite of financial tools.',
+			product3Title: 'Merchant QR Payments',
+			product3Text: 'Accept seamless payments via Malaysia National QR, deposited directly into your company\'s bank account.',
+			product4Title: 'Kash E-Wallet Apps',
+			product4Text: 'Flexible and modern E-Wallet solutions for accepting both QR and card payments effortlessly.',
+			
+			// Mission Section
+			missionTitle: 'Our Commitment to Your Growth',
+			missionSubtitle: 'We\'re dedicated to empowering Malaysian businesses with world-class financial technology.',
+			mission1Title: 'Premium Cards',
+			mission1Text: 'To provide entrepreneurs with premium, custom-branded Visa Prepaid Cards.',
+			mission2Title: 'Digital Economy',
+			mission2Text: 'To support the growth of the local digital economy for Small and Medium Enterprises (SMEs).',
+			mission3Title: 'Build Trust',
+			mission3Text: 'To build consumer confidence in local brands with internationally recognized Visa products.',
+			mission4Title: 'Secure Payments',
+			mission4Text: 'To offer a secure and professional digital payment system that benefits both businesses and their customers.',
+			
+			// Services Section
+			servicesTitle: 'Services Tailored for Your Brand',
+			servicesSubtitle: 'Comprehensive solutions designed to integrate seamlessly with your business operations.',
+			service1Title: 'Custom Branded Visa Cards',
+			service1Text: 'We deliver a Premium Edition Visa Prepaid Card featuring your company\'s branding. Our solution integrates seamlessly with customer loyalty programs to increase customer retention and attract new clients through exclusive benefits.',
+			service2Title: 'Integrated Payment Applications',
+			service2Text: 'Our payment application ecosystem features two core systems: Payment Merchant QR and Kash POS Apps. Both systems ensure that all payments, whether by QR code or ATM/Debit card, are settled directly and securely into your company bank account.',
+			
+			// Expertise Section
+			expertiseTitle: 'Our Expertise in FinTech',
+			expertiseSubtitle: 'Leveraging cutting-edge financial technology to deliver comprehensive digital solutions.',
+			expertiseHeading: 'Expertise',
+			expertiseText: 'In partnership with KASH PLUS, First Class Merchant specializes in financial technology (FinTech). Through the user-friendly Kash Plus application, users gain access to a comprehensive digital financial system, including an e-wallet and the ability to receive payments directly to their bank accounts.',
+			
+			// Merchant System Section
+			merchantTitle: 'A System Built for Profit and Loyalty',
+			merchantSubtitle: 'The complete digital business management and payment solution for modern entrepreneurs.',
+			merchantHeading: 'The First Class Merchant System',
+			merchantText: 'First Class Industries introduces the FIRST CLASS MERCHANT system—a digital business management and payment solution. This model empowers entrepreneurs to generate profits and build a loyal customer base using the co-branded Visa Prepaid Card and the KASH PLUS digital finance application.',
+			
+			// CTA Section
+			ctaTitle: 'Ready to Elevate Your Brand\'s Quality?',
+			ctaSubtitle: 'GET YOUR PREMIUM BRANDED VISA PREPAID CARD TODAY!',
+			ctaButton: 'Contact Us Today!',
+			
+			// Contact Section
+			contactTitle: 'Contact Us',
+			contactSubtitle: 'Let\'s discuss how we can help elevate your business with premium payment solutions.',
+			contactHeading: 'Get in Touch',
+			contactPhone: 'Phone',
+			contactEmail: 'Email',
+			contactAddress: 'Address',
+			contactFormTitle: 'Send us a Message',
+			contactFormName: 'Full Name',
+			contactFormCompany: 'Company Name',
+			contactFormEmail: 'Email Address',
+			contactFormPhone: 'Phone Number',
+			contactFormMessage: 'Message',
+			contactFormButton: 'Send Inquiry to WhatsApp',
+			contactFormNamePlaceholder: 'Your full name',
+			contactFormCompanyPlaceholder: 'Your company name',
+			contactFormEmailPlaceholder: 'your@email.com',
+			contactFormPhonePlaceholder: '+60 12-345 6789',
+			contactFormMessagePlaceholder: 'Tell us about your business and how we can help...'
+		},
+		bm: {
+			// Hero Section
+			heroTitle: 'Kuasakan Jenama Anda dengan Kad Prabayar Visa Premium',
+			heroSubtitle: 'Penyelesaian pembayaran digital moden yang direka untuk meningkatkan perniagaan Malaysia dan membina kesetiaan pelanggan.',
+			heroButton: 'Minta Perundingan',
+			
+			// About Section
+			aboutTitle: 'Berinovasi dalam Kewangan Digital untuk Usahawan Tempatan',
+			aboutText: 'First Class Industries adalah sebuah syarikat Malaysia yang memfokuskan kepada inovasi dalam pengurusan perniagaan dan kewangan digital. Kami pakar dalam menyediakan penyelesaian Kad Prabayar Visa berjenama tersuai, memperkasakan usahawan tempatan untuk membina imej profesional dan mengukuhkan hubungan pelanggan melalui rangkaian pembayaran yang moden dan fleksibel.',
+			aboutStat1: 'Perniagaan Dilayani',
+			aboutStat2: 'Kepuasan Pelanggan',
+			
+			// Products Section
+			productsTitle: 'Ekosistem Pembayaran Digital Lengkap',
+			productsSubtitle: 'Segala yang diperlukan oleh perniagaan anda untuk menerima pembayaran, menguruskan kewangan, dan membina kesetiaan pelanggan.',
+			product1Title: 'Kad Prabayar Visa Berjenama',
+			product1Text: 'Tawarkan kepada pelanggan anda kad Visa premium berjenama bersama yang meningkatkan prestij dan kegunaan jenama anda.',
+			product2Title: 'Aplikasi & E-Wallet Kash',
+			product2Text: 'Aplikasi mudah alih yang berkuasa memberikan pengguna akses kepada dompet digital selamat dan suite alat kewangan.',
+			product3Title: 'Pembayaran QR Pedagang',
+			product3Text: 'Terima pembayaran lancar melalui QR Nasional Malaysia, didepositkan terus ke akaun bank syarikat anda.',
+			product4Title: 'Aplikasi E-Wallet Kash',
+			product4Text: 'Penyelesaian E-Wallet yang fleksibel dan moden untuk menerima pembayaran QR dan kad dengan mudah.',
+			
+			// Mission Section
+			missionTitle: 'Komitmen Kami untuk Pertumbuhan Anda',
+			missionSubtitle: 'Kami berdedikasi untuk memperkasakan perniagaan Malaysia dengan teknologi kewangan bertaraf dunia.',
+			mission1Title: 'Kad Premium',
+			mission1Text: 'Untuk menyediakan usahawan dengan Kad Prabayar Visa premium berjenama tersuai.',
+			mission2Title: 'Ekonomi Digital',
+			mission2Text: 'Untuk menyokong pertumbuhan ekonomi digital tempatan bagi Perusahaan Kecil dan Sederhana (PKS).',
+			mission3Title: 'Bina Kepercayaan',
+			mission3Text: 'Untuk membina keyakinan pengguna terhadap jenama tempatan dengan produk Visa yang diiktiraf antarabangsa.',
+			mission4Title: 'Pembayaran Selamat',
+			mission4Text: 'Untuk menawarkan sistem pembayaran digital yang selamat dan profesional yang memberi manfaat kepada perniagaan dan pelanggan mereka.',
+			
+			// Services Section
+			servicesTitle: 'Perkhidmatan Disesuaikan untuk Jenama Anda',
+			servicesSubtitle: 'Penyelesaian komprehensif yang direka untuk berintegrasi dengan lancar dengan operasi perniagaan anda.',
+			service1Title: 'Kad Visa Berjenama Tersuai',
+			service1Text: 'Kami menyampaikan Kad Prabayar Visa Edisi Premium yang menampilkan penjenamaan syarikat anda. Penyelesaian kami berintegrasi dengan lancar dengan program kesetiaan pelanggan untuk meningkatkan pengekalan pelanggan dan menarik pelanggan baru melalui faedah eksklusif.',
+			service2Title: 'Aplikasi Pembayaran Bersepadu',
+			service2Text: 'Ekosistem aplikasi pembayaran kami menampilkan dua sistem teras: QR Pedagang Pembayaran dan Aplikasi Kash POS. Kedua-dua sistem memastikan bahawa semua pembayaran, sama ada melalui kod QR atau kad ATM/Debit, diselesaikan secara langsung dan selamat ke dalam akaun bank syarikat.',
+			
+			// Expertise Section
+			expertiseTitle: 'Kepakaran Kami dalam FinTech',
+			expertiseSubtitle: 'Memanfaatkan teknologi kewangan terdepan untuk menyampaikan penyelesaian digital yang komprehensif.',
+			expertiseHeading: 'Kepakaran',
+			expertiseText: 'Dalam perkongsian dengan KASH PLUS, First Class Merchant mengkhusus dalam teknologi kewangan (FinTech). Melalui aplikasi Kash Plus yang mesra pengguna, pengguna mendapat akses kepada sistem kewangan digital yang komprehensif, termasuk e-wallet dan keupayaan untuk menerima pembayaran terus ke akaun bank mereka.',
+			
+			// Merchant System Section
+			merchantTitle: 'Sistem yang Dibina untuk Keuntungan dan Kesetiaan',
+			merchantSubtitle: 'Penyelesaian pengurusan perniagaan digital dan pembayaran lengkap untuk usahawan moden.',
+			merchantHeading: 'Sistem Pedagang First Class',
+			merchantText: 'First Class Industries memperkenalkan sistem FIRST CLASS MERCHANT—penyelesaian pengurusan perniagaan digital dan pembayaran. Model ini memperkasakan usahawan untuk menjana keuntungan dan membina pangkalan pelanggan setia menggunakan Kad Prabayar Visa berjenama bersama dan aplikasi kewangan digital KASH PLUS.',
+			
+			// CTA Section
+			ctaTitle: 'Bersedia untuk Meningkatkan Kualiti Jenama Anda?',
+			ctaSubtitle: 'DAPATKAN KAD PRABAYAR VISA BERJENAMA PREMIUM ANDA HARI INI!',
+			ctaButton: 'Hubungi Kami Hari Ini!',
+			
+			// Contact Section
+			contactTitle: 'Hubungi Kami',
+			contactSubtitle: 'Mari berbincang bagaimana kami boleh membantu meningkatkan perniagaan anda dengan penyelesaian pembayaran premium.',
+			contactHeading: 'Berhubung',
+			contactPhone: 'Telefon',
+			contactEmail: 'E-mel',
+			contactAddress: 'Alamat',
+			contactFormTitle: 'Hantar Mesej kepada Kami',
+			contactFormName: 'Nama Penuh',
+			contactFormCompany: 'Nama Syarikat',
+			contactFormEmail: 'Alamat E-mel',
+			contactFormPhone: 'Nombor Telefon',
+			contactFormMessage: 'Mesej',
+			contactFormButton: 'Hantar Pertanyaan ke WhatsApp',
+			contactFormNamePlaceholder: 'Nama penuh anda',
+			contactFormCompanyPlaceholder: 'Nama syarikat anda',
+			contactFormEmailPlaceholder: 'emel@anda.com',
+			contactFormPhonePlaceholder: '+60 12-345 6789',
+			contactFormMessagePlaceholder: 'Beritahu kami tentang perniagaan anda dan bagaimana kami boleh membantu...'
+		}
+	};
+	function updateNavbarText(lang) {
+		const t = translations[lang];
+		
+		// Update desktop menu
+		document.querySelector('.hidden.md\\:block a[href="#home"]').textContent = t.home;
+		document.querySelector('a[href="#about"]').textContent = t.about;
+		document.querySelector('a[href="#products"]').textContent = t.products;
+		document.querySelector('a[href="#services"]').textContent = t.services;
+		document.querySelector('a[href="#expertise"]').textContent = t.expertise;
+		document.querySelector('a[href="#contact"]:not(.bg-gold)').textContent = t.contact;
+		document.querySelector('a[href="#contact"].bg-gold').textContent = t.getCard;
+		
+		// Update mobile menu
+		const mobileLinks = document.querySelectorAll('#mobile-menu a');
+		mobileLinks[0].textContent = t.home;
+		mobileLinks[1].textContent = t.about;
+		mobileLinks[2].textContent = t.products;
+		mobileLinks[3].textContent = t.services;
+		mobileLinks[4].textContent = t.expertise;
+		mobileLinks[5].textContent = t.contact;
+		mobileLinks[6].textContent = t.getCard;
+		
+		// Update translation buttons
+		document.getElementById('translate-btn').textContent = t.btnText;
+		document.getElementById('mobile-translate-btn').textContent = t.btnText;
+	}
+
+	function updateWebsiteContent(lang) {
+		const t = websiteTranslations[lang];
+		
+		// Update Hero Section
+		const heroTitle = document.querySelector('#home h1');
+		if (heroTitle) {
+			heroTitle.innerHTML = lang === 'en' 
+				? 'Empower Your Brand with a <span class="text-gold">Premium Visa</span> Prepaid Card'
+				: 'Kuasakan Jenama Anda dengan <span class="text-gold">Kad Prabayar Visa</span> Premium';
+		}
+		const heroSubtitle = document.querySelector('#home p');
+		if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+		const heroButton = document.querySelector('#home a');
+		if (heroButton) heroButton.textContent = t.heroButton;
+		
+		// Update About Section
+		const aboutTitle = document.querySelector('#about h2');
+		if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+		const aboutText = document.querySelector('#about p');
+		if (aboutText) aboutText.textContent = t.aboutText;
+		const aboutStats = document.querySelectorAll('#about .text-light-gray');
+		if (aboutStats[0]) aboutStats[0].textContent = t.aboutStat1;
+		if (aboutStats[1]) aboutStats[1].textContent = t.aboutStat2;
+		
+		// Update Products Section
+		const productsTitle = document.querySelector('#products h2');
+		if (productsTitle) productsTitle.textContent = t.productsTitle;
+		const productsSubtitle = document.querySelector('#products p');
+		if (productsSubtitle) productsSubtitle.textContent = t.productsSubtitle;
+		
+		const productTitles = document.querySelectorAll('#products h3');
+		const productTexts = document.querySelectorAll('#products .font-inter.text-light-gray');
+		if (productTitles[0]) productTitles[0].textContent = t.product1Title;
+		if (productTexts[0]) productTexts[0].textContent = t.product1Text;
+		if (productTitles[1]) productTitles[1].textContent = t.product2Title;
+		if (productTexts[1]) productTexts[1].textContent = t.product2Text;
+		if (productTitles[2]) productTitles[2].textContent = t.product3Title;
+		if (productTexts[2]) productTexts[2].textContent = t.product3Text;
+		if (productTitles[3]) productTitles[3].textContent = t.product4Title;
+		if (productTexts[3]) productTexts[3].textContent = t.product4Text;
+		
+		// Update Mission Section
+		const missionTitle = document.querySelector('#mission h2');
+		if (missionTitle) missionTitle.textContent = t.missionTitle;
+		const missionSubtitle = document.querySelector('#mission p');
+		if (missionSubtitle) missionSubtitle.textContent = t.missionSubtitle;
+		
+		const missionTitles = document.querySelectorAll('#mission h3');
+		const missionTexts = document.querySelectorAll('#mission .font-inter.text-light-gray');
+		if (missionTitles[0]) missionTitles[0].textContent = t.mission1Title;
+		if (missionTexts[0]) missionTexts[0].textContent = t.mission1Text;
+		if (missionTitles[1]) missionTitles[1].textContent = t.mission2Title;
+		if (missionTexts[1]) missionTexts[1].textContent = t.mission2Text;
+		if (missionTitles[2]) missionTitles[2].textContent = t.mission3Title;
+		if (missionTexts[2]) missionTexts[2].textContent = t.mission3Text;
+		if (missionTitles[3]) missionTitles[3].textContent = t.mission4Title;
+		if (missionTexts[3]) missionTexts[3].textContent = t.mission4Text;
+		
+		// Update Services Section
+		const servicesTitle = document.querySelector('#services h2');
+		if (servicesTitle) servicesTitle.textContent = t.servicesTitle;
+		const servicesSubtitle = document.querySelector('#services p');
+		if (servicesSubtitle) servicesSubtitle.textContent = t.servicesSubtitle;
+		
+		const serviceTitles = document.querySelectorAll('#services h3');
+		const serviceTexts = document.querySelectorAll('#services .font-inter.text-lg');
+		if (serviceTitles[0]) serviceTitles[0].textContent = t.service1Title;
+		if (serviceTexts[0]) serviceTexts[0].textContent = t.service1Text;
+		if (serviceTitles[1]) serviceTitles[1].textContent = t.service2Title;
+		if (serviceTexts[1]) serviceTexts[1].textContent = t.service2Text;
+		
+		// Update Expertise Section
+		const expertiseTitle = document.querySelector('#expertise h2');
+		if (expertiseTitle) expertiseTitle.textContent = t.expertiseTitle;
+		const expertiseSubtitle = document.querySelector('#expertise p');
+		if (expertiseSubtitle) expertiseSubtitle.textContent = t.expertiseSubtitle;
+		const expertiseHeading = document.querySelector('#expertise h3');
+		if (expertiseHeading) expertiseHeading.textContent = t.expertiseHeading;
+		const expertiseText = document.querySelector('#expertise .font-inter.text-lg');
+		if (expertiseText) expertiseText.textContent = t.expertiseText;
+		
+		// Update Merchant System Section
+		const merchantTitle = document.querySelector('#merchant-system h2');
+		if (merchantTitle) merchantTitle.textContent = t.merchantTitle;
+		const merchantSubtitle = document.querySelector('#merchant-system p');
+		if (merchantSubtitle) merchantSubtitle.textContent = t.merchantSubtitle;
+		const merchantHeading = document.querySelector('#merchant-system h3');
+		if (merchantHeading) merchantHeading.textContent = t.merchantHeading;
+		const merchantText = document.querySelector('#merchant-system .font-inter.text-lg');
+		if (merchantText) merchantText.textContent = t.merchantText;
+		
+		// Update CTA Section
+		const ctaTitle = document.querySelector('section:has(.bg-gradient-to-r) h1');
+		if (ctaTitle) {
+			ctaTitle.innerHTML = lang === 'en'
+				? 'Ready to Elevate Your <span class="text-gold">Brand\'s Quality?</span>'
+				: 'Bersedia untuk Meningkatkan <span class="text-gold">Kualiti Jenama</span> Anda?';
+		}
+		const ctaSubtitle = document.querySelector('section:has(.bg-gradient-to-r) .font-poppins.font-semibold.text-xl');
+		if (ctaSubtitle) ctaSubtitle.textContent = t.ctaSubtitle;
+		const ctaButton = document.querySelector('section:has(.bg-gradient-to-r) a');
+		if (ctaButton) ctaButton.textContent = t.ctaButton;
+		
+		// Alternative selectors for CTA section if the above don't work
+		// More specific CTA section selectors
+		const ctaSections = document.querySelectorAll('section');
+		ctaSections.forEach(section => {
+			if (section.classList.contains('bg-gradient-to-r') || section.querySelector('.bg-gradient-to-r')) {
+				const title = section.querySelector('h1');
+				const subtitle = section.querySelector('.font-poppins.font-semibold.text-xl');
+				const button = section.querySelector('a.bg-gold');
+				
+				if (title) {
+					title.innerHTML = lang === 'en'
+						? 'Ready to Elevate Your <span class="text-gold">Brand\'s Quality?</span>'
+						: 'Bersedia untuk Meningkatkan <span class="text-gold">Kualiti Jenama</span> Anda?';
+				}
+				if (subtitle) subtitle.textContent = t.ctaSubtitle;
+				if (button) button.textContent = t.ctaButton;
+			}
+		});
+		
+		// Fallback: Direct text content search and replace
+		const allH1s = document.querySelectorAll('h1');
+		allH1s.forEach(h1 => {
+			if (h1.textContent.includes('Ready to Elevate') || h1.textContent.includes('Bersedia untuk')) {
+				h1.innerHTML = lang === 'en'
+					? 'Ready to Elevate Your <span class="text-gold">Brand\'s Quality?</span>'
+					: 'Bersedia untuk Meningkatkan <span class="text-gold">Kualiti Jenama</span> Anda?';
+			}
+		});
+		
+		const allButtons = document.querySelectorAll('a.bg-gold');
+		allButtons.forEach(button => {
+			if (button.textContent.includes('Contact Us Today') || button.textContent.includes('Hubungi Kami')) {
+				button.textContent = t.ctaButton;
+			}
+		});
+		
+		// Update Contact Section
+		const contactTitle = document.querySelector('#contact h2');
+		if (contactTitle) contactTitle.textContent = t.contactTitle;
+		const contactSubtitle = document.querySelector('#contact p');
+		if (contactSubtitle) contactSubtitle.textContent = t.contactSubtitle;
+		const contactHeading = document.querySelector('#contact h3');
+		if (contactHeading) contactHeading.textContent = t.contactHeading;
+		
+		// Update contact info labels
+		const contactLabels = document.querySelectorAll('#contact h4');
+		if (contactLabels[0]) contactLabels[0].textContent = t.contactPhone;
+		if (contactLabels[1]) contactLabels[1].textContent = t.contactEmail;
+		if (contactLabels[2]) contactLabels[2].textContent = t.contactAddress;
+		
+		// Update contact form
+		const formTitle = document.querySelector('#contact .bg-dark-charcoal h3');
+		if (formTitle) formTitle.textContent = t.contactFormTitle;
+		
+		const formLabels = document.querySelectorAll('#contact label');
+		if (formLabels[0]) formLabels[0].textContent = t.contactFormName;
+		if (formLabels[1]) formLabels[1].textContent = t.contactFormCompany;
+		if (formLabels[2]) formLabels[2].textContent = t.contactFormEmail;
+		if (formLabels[3]) formLabels[3].textContent = t.contactFormPhone;
+		if (formLabels[4]) formLabels[4].textContent = t.contactFormMessage;
+		
+		const formInputs = document.querySelectorAll('#contact input, #contact textarea');
+		if (formInputs[0]) formInputs[0].placeholder = t.contactFormNamePlaceholder;
+		if (formInputs[1]) formInputs[1].placeholder = t.contactFormCompanyPlaceholder;
+		if (formInputs[2]) formInputs[2].placeholder = t.contactFormEmailPlaceholder;
+		if (formInputs[3]) formInputs[3].placeholder = t.contactFormPhonePlaceholder;
+		if (formInputs[4]) formInputs[4].placeholder = t.contactFormMessagePlaceholder;
+		
+		const formButton = document.querySelector('#contact button[type="submit"]');
+		if (formButton) formButton.textContent = t.contactFormButton;
+	}
+	// Desktop translation button
+	document.getElementById('translate-btn').addEventListener('click', function() {
+		isEnglish = !isEnglish;
+		const lang = isEnglish ? 'en' : 'bm';
+		updateNavbarText(isEnglish ? 'en' : 'bm');
+		updateWebsiteContent(lang);
+	});
+
+	// Mobile translation button
+	document.getElementById('mobile-translate-btn').addEventListener('click', function() {
+		isEnglish = !isEnglish;
+		const lang = isEnglish ? 'en' : 'bm';
+		updateNavbarText(isEnglish ? 'en' : 'bm');
+		updateWebsiteContent(lang);
+	});
+</script>
