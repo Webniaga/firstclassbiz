@@ -485,4 +485,25 @@
 		updateNavbarText(isEnglish ? 'en' : 'bm');
 		updateWebsiteContent(lang);
 	});
+	// Desktop translation button
+	const desktopTranslateBtn = document.getElementById('translate-btn');
+	if (desktopTranslateBtn) {
+		desktopTranslateBtn.addEventListener('click', function() {
+			isEnglish = !isEnglish;
+			const lang = isEnglish ? 'en' : 'bm';
+			updateNavbarText(isEnglish ? 'en' : 'bm');
+			updateWebsiteContent(lang);
+		});
+	}
+
+	// Mobile translation button
+	const mobileTranslateBtn = document.getElementById('mobile-translate-btn');
+	if (mobileTranslateBtn) {
+		mobileTranslateBtn.addEventListener('click', function() {
+			isEnglish = !isEnglish;
+			const lang = isEnglish ? 'en' : 'bm';
+			updateNavbarText(isEnglish ? 'en' : 'bm');
+			updateWebsiteContent(lang);
+		});
+	}
 </script>
